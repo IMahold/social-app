@@ -7,7 +7,6 @@ export default function Routes() {
     <div>
         <Switch>
             <Route path='/' exact component={LoginForm} />
-            {/* <Route path='/register' exact component={Register} /> */}
             {/* <Route path='home' exact component={Home} /> */}
             <Route exact component={Unknown} />
         </Switch>
