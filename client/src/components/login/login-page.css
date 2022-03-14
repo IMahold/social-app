@@ -1,0 +1,44 @@
+.login-container {
+  display: flex;
+}
+
+.background-image {
+  width: 55%;
+  min-height: 100vh;
+  background-image: url("../../pictures/twitter.jpg");
+  background-position: center bottom;
+}
+
+.login-content {
+  padding: 45px;
+  width: 40%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-content h1 {
+  margin-top: 10rem;
+  font-size: 5rem;
+}
+
+.small-container {
+  margin-top: 5rem;
+  width: 20rem;
+}
+
+.small-container div {
+  margin-bottom: 3rem;
+}
+
+.p-blue {
+  font-size: 0.7rem;
+}
+
+.p-blue span {
+  color: rgb(3, 150, 248);
+}
+
+.p-bold {
+  font-weight: 800;
+}
