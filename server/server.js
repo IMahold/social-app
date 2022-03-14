@@ -5,13 +5,12 @@ require('dotenv').config()
 
 
 const connectToDb = require('./config/db')
-
 connectToDb()
 
 
 
 app.use(express.json()) // used to process the body part of the incoming message
-app.use('/users', require('./routes/userRoutes'))
+app.use('/users', require('./api/users'))
 
 const port = process.env.PORT || 6000
 

@@ -3,8 +3,14 @@ const express = require('express')
 const User = require('../models/User')
 const router = express.Router()
 
+// router.get('/register', (req,res)=> {
+//     res.send("Hello from Register")
+// })
+
 
 router.post('/register', async (req, res) => {
+
+
 
     try {
         
@@ -61,4 +67,4 @@ router.post('/login', async (req, res) => {
     }
 })
 
-module.exports = router
+ module.exports = router
