@@ -113,7 +113,7 @@ export default function Profile() {
             <img
               src={fileUrl}
               alt=""
-              style={{  objectFit: "cover" }}
+              style={{ height: '300px', width: '300px' , objectFit: "cover" }}
               className="img-fluid rounded "
             />
           </MDBRipple>

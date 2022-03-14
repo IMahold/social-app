@@ -5,11 +5,12 @@ import Login from "./components/login/LoginForm";
 import Register from "./components/register/Register";
 import Home from "./components/home/Home";
 import Profile from "./components/profile/Profile";
+import LoginPage from "./components/login/LoginPage";
 
 function App() {
   return (
     <Switch>
-      <Route path="/" exact component={Login} />
+      <Route path="/" exact component={LoginPage} />
       <Route path="/register" exact component={Register} />
       <Route path="/home" exact component={Home} />
       <Route path="/profile" exact component={Profile} />
