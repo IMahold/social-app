@@ -6,6 +6,7 @@ import Profile from "./components/profile/Profile";
 import LoginPage from "./components/login/LoginPage";
 
 function App() {
+  
   return (
     <Switch>
       <Route path="/" exact component={LoginPage} />
