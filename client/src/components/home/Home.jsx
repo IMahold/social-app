@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useContext } from "react";
-import { UserContext } from "../context";
+
+import Hoot from "../hoot/Hoot";
+import Navbar from "../navbar/Navbar";
+import React, { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { UserContext } from '../context'
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 
@@ -49,8 +52,19 @@ export default function Home() {
   return (
     <>
       <div>Home</div>
+     <div className="d-flex pt-4">
+      <Navbar />
+      <div>
+        <Hoot />
+      </div>
+      
+    
+    </div>
+
+
+
+
       <button onClick={handleLogout}>Log out</button>
-      <Link to="/profile">Profile</Link>
       <button onClick={() => setShowModal(true)}>Add post</button>
 
       {posts?.map((item) => (
