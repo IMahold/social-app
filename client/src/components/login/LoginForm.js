@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   MDBRow,
   MDBCol,
@@ -13,25 +13,36 @@ import {
   MDBTabsPane,
 } from "mdb-react-ui-kit";
 import axios from "axios";
+import { Link, useHistory } from "react-router-dom";
+import { UserContext } from "../context";
 
 export default function LoginForm({ value }) {
-
+  
   const [data, setData] = useState({
     name:"",
     username:"",
     email:"",
     pass:""
-  })
+  });
 
+  const{setUserData} = useContext(UserContext)
+  
+  const history = useHistory();
+  
 
   const handleClick = async(e) => {
     e.preventDefault()
 
 
     if(!data.email || !data.pass ) return
-    const response = await axios.post('/users/login', data)
+    const response = await axios.post('/users/login', data) 
 
     console.log("Response is", response);
+    if(response.data.success){
+      setUserData({...response.data.user})
+
+      history.push('/home')
+    } 
 
   }
 
@@ -130,7 +141,8 @@ export default function LoginForm({ value }) {
                 />
               </MDBCol>
               <MDBCol>
-                <a href="#!">Forgot password?</a>
+
+                <Link to="/forgotpass">Forgot password?</Link>
               </MDBCol>
             </MDBRow>
 

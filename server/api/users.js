@@ -51,7 +51,9 @@ router.post('/login', async (req, res) => {
         // if (!pass) send success false
 
         // const user = User.findOne({email: email, pass: pass})
-        const user = await User.findOne({$or: [{email}, {username}], pass}).select('email username')
+        const user = await User.findOne({$or: [{email}, {username}], pass}).select('-pass')
+        // const user = await User.findOne({$or: [{email}, {username}], pass}).select('email username')
+
 
 
 
@@ -66,5 +68,35 @@ router.post('/login', async (req, res) => {
         res.send(error.message)
     }
 })
+
+router.patch('/profile', async (req, res) => {
+
+    try {
+        
+        console.log('req.body is', req.body)
+
+        const {email, username, _id} = req.body
+
+        if (!(email || username)) return res.send({success: false, errorId: 2})
+
+  
+        const user = await User.findByIdAndUpdate(_id,req.body, {new:true}).select('-__v -pass')
+
+
+
+        console.log('Profile: user is', user)
+
+        if (!user) return res.send({success: false, errorId: 2})
+
+        res.send({success:true, user})
+    } catch (error) {
+        
+        console.log('Register ERROR:', error.message)
+        res.send(error.message)
+    }
+})
+
+
+
 
  module.exports = router
