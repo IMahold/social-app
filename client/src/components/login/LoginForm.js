@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
   MDBRow,
   MDBCol,
@@ -13,43 +13,42 @@ import {
   MDBTabsPane,
 } from "mdb-react-ui-kit";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
+import { UserContext } from "../context"
+
 
 export default function LoginForm({ value }) {
-
   const [data, setData] = useState({
-    name:"",
-    username:"",
-    email:"",
-    pass:""
-  })
+    name: "",
+    username: "",
+    email: "",
+    pass: "",
+  });
 
+  const {setUserData} = useContext(UserContext)
 
-  const handleClick = async(e) => {
-    e.preventDefault()
+  const history = useHistory();
+  const handleClick = async (e) => {
+    e.preventDefault();
 
-
-    if(!data.email || !data.pass ) return
-    const response = await axios.post('/users/login', data)
+    if (!data.email || !data.pass) return;
+    const response = await axios.post("/users/login", data);
 
     console.log("Response is", response);
+    if (response.data.success) {
+      setUserData({...response.data.user})
+      history.push("/home")
+    };
+  };
 
-  }
+  const handleRegister = async () => {
+    if (!data.email || !data.pass || !data.name || !data.username) return;
+    const response = await axios.post("/users/register", data);
 
-
-
-  const handleRegister = async() => {
-    if(!data.email || !data.pass || !data.name || !data.username ) return
-    const response = await axios.post('/users/register', data)
-
-    console.log("Response",response);
-
-  }
-
+    console.log("Response", response);
+  };
 
   const [loginRegisterActive, setLoginRegisterActive] = useState(value);
-
-
-
 
   const handleLoginRegisterClick = (arg) => {
     if (arg === loginRegisterActive) return;
@@ -81,7 +80,7 @@ export default function LoginForm({ value }) {
 
       <MDBTabsContent>
         <MDBTabsPane show={loginRegisterActive === "login"}>
-          <form onSubmit={e => e.preventDefault()}>
+          <form onSubmit={(e) => e.preventDefault()}>
             <div className="text-center mb-3">
               <p>Sign up with:</p>
 
@@ -110,7 +109,7 @@ export default function LoginForm({ value }) {
               id="form7Example1"
               label="Email address"
               value={data.email}
-              onChange={e => setData({...data, email:e.target.value})}
+              onChange={(e) => setData({ ...data, email: e.target.value })}
             />
             <MDBInput
               className="mb-4"
@@ -118,7 +117,7 @@ export default function LoginForm({ value }) {
               id="form7Example2"
               label="Password"
               value={data.pass}
-              onChange={e => setData({...data, pass:e.target.value})}
+              onChange={(e) => setData({ ...data, pass: e.target.value })}
             />
 
             <MDBRow className="mb-4">
@@ -169,21 +168,31 @@ export default function LoginForm({ value }) {
 
             <p className="text-center">or:</p>
 
-            <MDBInput className="mb-4" id="form8Example1" label="Name"  onChange={e => setData({...data, name:e.target.value})}/>
-            <MDBInput className="mb-4" id="form8Example2" label="Username" onChange={e => setData({...data, username:e.target.value})} />
+            <MDBInput
+              className="mb-4"
+              id="form8Example1"
+              label="Name"
+              onChange={(e) => setData({ ...data, name: e.target.value })}
+            />
+            <MDBInput
+              className="mb-4"
+              id="form8Example2"
+              label="Username"
+              onChange={(e) => setData({ ...data, username: e.target.value })}
+            />
             <MDBInput
               className="mb-4"
               type="email"
               id="form8Example3"
               label="Email address"
-              onChange={e => setData({...data, email:e.target.value})}
+              onChange={(e) => setData({ ...data, email: e.target.value })}
             />
             <MDBInput
               className="mb-4"
               type="password"
               id="form8Example4"
               label="Password"
-              onChange={e => setData({...data, pass:e.target.value})}
+              onChange={(e) => setData({ ...data, pass: e.target.value })}
             />
             <MDBInput
               className="mb-4"
@@ -199,7 +208,12 @@ export default function LoginForm({ value }) {
               defaultChecked
             />
 
-            <MDBBtn type="submit" className="mb-4" block onClick={handleRegister}>
+            <MDBBtn
+              type="submit"
+              className="mb-4"
+              block
+              onClick={handleRegister}
+            >
               Sign up
             </MDBBtn>
           </form>
