@@ -1,4 +1,6 @@
 const express = require("express");
+
+
 const router = express.Router();
 
 const Post = require("../models/Posts");
@@ -7,6 +9,7 @@ router.post("/add", async (req, res) => {
   try {
     console.log("posts/add body is", req.body);
     const newPost = new Post(req.body);
+
     const post = await newPost
       .save()
       .then((item) =>
