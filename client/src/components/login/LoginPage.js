@@ -24,9 +24,10 @@ export default function LoginPage() {
     <div className="login-container">
       <div className="background-image"></div>
       <div className="login-content">
+      <i className="fab fa-3x fa-earlybirds"></i>
         <h1>Happening now</h1>
         <div className="small-container">
-          <h2>Join Twitter today.</h2>
+          <h2>Join Hooter today.</h2>
 
           <div>
             <MDBBtn
