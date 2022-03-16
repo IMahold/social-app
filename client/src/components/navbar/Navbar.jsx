@@ -1,54 +1,54 @@
-import Hoot from "../hoot/Hoot";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <div className="w-25 sticky-left mx-5 fs-5">
       <nav className="navbar navbar-light bg-light">
         <ul className="list-unstyled p-2 d-flex flex-column">
-          <a className="navbar-brand" href="/">
+          <Link className="navbar-brand" to="/">
             <i class="fab fa-earlybirds fa-2x text-primary" />
-          </a>
+          </Link>
           <li className="nav-item active">
-            <a href="/" className="nav-link">
+            <Link to="/home" className="nav-link">
               <i class="fas fa-home" /> Home
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a href="" className="nav-link">
+            <Link to="" className="nav-link">
               <i class="fas fa-search" /> Explore
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a href="" className="nav-link">
+            <Link to="" className="nav-link">
               <i class="fas fa-bell" /> Notifications
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a href="" className="nav-link">
+            <Link to="" className="nav-link">
               <i class="fas fa-comment-alt" /> Messages
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a href="" className="nav-link">
+            <Link to="" className="nav-link">
               <i class="fas fa-bookmark" /> Bookmarks
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a href="" className="nav-link">
+            <Link to="" className="nav-link">
               <i class="fas fa-list" /> Lists
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a href="" className="nav-link">
+            <Link to="/profile" className="nav-link">
               <i class="fas fa-user" /> Profile
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a href="" className="nav-link">
+            <Link to="" className="nav-link">
               <i class="fas fa-angle-double-right" /> More
-            </a>
+            </Link>
           </li>
-          <button type="button" class="btn btn-info self-align-center" onClick={Hoot}>
+          <button type="button" class="btn btn-info self-align-center" >
             <i class="fas fa-feather" />
             <span> Hoot</span>
           </button>

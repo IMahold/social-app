@@ -1,12 +1,14 @@
+import './profile.css'
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { UserContext } from "../context";
-import { MDBContainer, MDBRipple, MDBBtn } from "mdb-react-ui-kit";
+import { MDBContainer, MDBIcon, MDBTypography } from "mdb-react-ui-kit";
 
-import Inputs from "./profileComponents/inputs";
-
+// import Inputs from "./profileComponents/inputs";
+import Edit from "./edit";
+import Modal from "./profileComponents/modal";
 export default function Profile() {
   const { userData, setUserData } = useContext(UserContext);
   const [data, setData] = useState({
@@ -17,13 +19,29 @@ export default function Profile() {
   const [fileUrl, setFileUrl] = useState("");
   const [blobFile, setBlobFile] = useState(null);
 
+  const [iseEdit, setiseEdit] = useState(false);
+
+  // Modal Stuff
+  const [basicModal, setBasicModal] = useState(false);
+  const toggleShow = () => setBasicModal(!basicModal);
+
   useEffect(() => {
     setData({ ...data, ...userData });
     setFileUrl(userData?.image);
   }, []);
 
   const handleSave = async () => {
-    console.log("data is ", data);
+
+    const dataToSend = {
+      ...data,
+      _id:userData._id
+    }
+
+
+
+  
+
+    console.log("data is ", dataToSend);
 
     const formdata = new FormData();
 
@@ -31,12 +49,6 @@ export default function Profile() {
     formdata.set("_id", userData._id);
 
     Object.entries(data).forEach((item) => formdata.set(item[0], item[1]));
-
-    // formdata.set('address', data.address )
-    // formdata.set('email', data.email )
-    // formdata.set('username', data.username )
-    // formdata.set('age', data.age )
-
     if (blobFile) formdata.set("image", blobFile, "somefilename"); // add a file and a name
 
     const config = {
@@ -45,7 +57,8 @@ export default function Profile() {
 
     console.log("Handlesave: formdata is", formdata.keys());
 
-    const response = await axios.patch("/users/profile", formdata, config);
+    const response = await axios.patch("/users/profile", dataToSend);
+    // const response = await axios.patch("/users/profile", formdata, config);
 
     console.log("response from profile is", response);
 
@@ -63,72 +76,76 @@ export default function Profile() {
     setBlobFile(e.currentTarget.files[0]);
   };
   return (
-    <MDBContainer breakpoint="sm">
-      <p>
-        <Link to="/home">Home</Link>
-      </p>
+    <>
+      <MDBContainer
+        breakpoint="sm"
+        fluid
+        style={{ maxWidth: "600px", margin: "10px auto" }}
+      >
+        <MDBIcon
+          fas
+          icon="arrow-left"
+          style={{ verticalAlign: "middle", marginTop: "-30px" }}
+        />
+        
 
-      <div className="d-flex  ">
-        <div>
-          {/* Input To see the email */}
-          <Inputs title="email" value={userData?.email} isReadOnly={true} />
-
-          {/* Input To see the username */}
-          <Inputs
-            title="username"
-            value={userData?.username}
-            isReadOnly={true}
-          />
-
-          {/* Input To change the age */}
-          <Inputs
-            title="age"
-            value={data?.age}
-            type={"number"}
-            func={(e) => setData({ ...data, age: e.target.value })}
-          />
-
-          {/* Input To change the Address */}
-          <Inputs
-            title="address"
-            value={data?.address}
-            func={(e) => setData({ ...data, address: e.target.value })}
-          />
-
-          {/* Input To select file */}
-
-            <Inputs
-              type="file"
-              title="Select your profile image"
-              htmlFor="file"
-              func={handleImageChange}
-            ></Inputs>
+        {/* <h6 className="mx-5 d-inline css-901oao text-muted"  >
+              {userData?.username || "Name goes Here"}
+            </h6> */}
+        <div className=" d-inline-block">
+          <MDBTypography
+            className="mx-5   text-muted"
+            variant="h4"
+            style={{ marginBottom: "0" }}
+          >
+            {userData?.username || "Name goes Here"}
+          </MDBTypography>
+          <p className="mx-5">Hoots {data?.posts}</p>
         </div>
+        <img
+          src="https://mdbootstrap.com/img/new/standard/city/041.webp"
+          className="img "
+          alt="..."
+          style={{
+            width: "100%",
+            height: "200px",
+            objectFit: "cover",
+            objectPosition: "bottom",
+          }}
+        />
+        <img
+          src="https://mdbootstrap.com/img/new/standard/city/041.webp"
+          className="img rounded-circle "
+          alt="..."
+          style={{
+            width: "150px",
+            height: "150px",
+            objectFit: "cover",
+            transform: "translate(10px, -50px)",
+            border: "4px solid white",
+          }}
+        />
+        <button onClick={toggleShow}> Edit Profile </button>
+      </MDBContainer>
 
-        <div className="mx-4">
-          {/* // <label htmlFor="file" style={{ cursor: "pointer" }}>
-        //   Select your profile image
-        // </label> */}
-          <MDBRipple rippleTag="div">
-            <img
-              src={fileUrl}
-              alt=""
-              style={{ height: '300px', width: '300px' , objectFit: "cover" }}
-              className="img-fluid rounded "
-            />
-          </MDBRipple>
-        </div>
-        {/* <input
-          onChange={handleImageChange}
-          id="file"
-          type="file"
-          style={{ visibility: "hidden" }}
-        /> */}
-      </div>
-      {/* <button onClick={handleSave}>Save profile</button> */}
-      <MDBBtn onClick={handleSave}>
-      Save profile
-      </MDBBtn>
-    </MDBContainer>
+      {basicModal ? (
+        <Modal
+          toggleShow={toggleShow}
+          basicModal={basicModal}
+          setBasicModal={setBasicModal}
+        >
+          <Edit
+            userData={userData}
+            data={data}
+            fileUrl={fileUrl}
+            setData={setData}
+            handleImageChange={handleImageChange}
+            handleSave={handleSave}
+            close={toggleShow}
+            
+          />
+        </Modal>
+      ) : null}
+    </>
   );
 }

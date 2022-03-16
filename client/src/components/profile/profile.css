@@ -1,0 +1,49 @@
+.main {
+  padding: 0 !important;
+}
+
+.main > p {
+  margin-left: 40px;
+  margin-top: 10px;
+}
+
+.modal-body {
+  padding: 0 !important;
+}
+
+.ripple .ripple-surface {
+  width: 100%;
+}
+
+.imageModalContainer,
+.imageModalContainer > div:first-child {
+  width: 100% !important;
+}
+.imageModalContainer > div > :nth-child(2) {
+  margin-left: 10px;
+}
+
+.modalInput {
+  padding: 0 20px;
+  margin-top: -20px !important;
+}
+
+.modalButton {
+  margin: 0 20px;
+}
+
+.modalButtonContainer {
+  margin: 20px 0 30px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 0.5fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-template-areas: ". . .";
+}
+
+
+.modalButtonContainer > span {
+    grid-column: 2/2;
+    
+}
