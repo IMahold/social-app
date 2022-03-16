@@ -1,4 +1,4 @@
-import './profile.css'
+import "./profile.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
@@ -71,19 +71,21 @@ export default function Profile() {
         fluid
         style={{ maxWidth: "600px", margin: "10px auto" }}
       >
-        <MDBIcon
-          fas
-          icon="arrow-left"
-          style={{ verticalAlign: "middle", marginTop: "-30px" }}
-        />
-        
+        <Link to="/home">
+          <MDBIcon
+            fas
+            icon="arrow-left"
+            className="text-dark"
+            style={{ verticalAlign: "middle", marginTop: "-30px" }}
+          />
+        </Link>
 
         {/* <h6 className="mx-5 d-inline css-901oao text-muted"  >
               {userData?.username || "Name goes Here"}
             </h6> */}
         <div className=" d-inline-block">
           <MDBTypography
-            className="mx-5   text-muted"
+            className="mx-5"
             variant="h4"
             style={{ marginBottom: "0" }}
           >
@@ -131,7 +133,6 @@ export default function Profile() {
             handleImageChange={handleImageChange}
             handleSave={handleSave}
             close={toggleShow}
-            
           />
         </Modal>
       ) : null}
