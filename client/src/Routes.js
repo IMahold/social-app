@@ -7,7 +7,7 @@ import LoginPage from "./components/login/LoginPage";
 
 function App() {
   return (
-    <Switch>
+  <Switch>
       <Route path="/" exact component={LoginPage} />
       <Route path="/home" exact component={Home} />
       <Route path="/profile" exact component={Profile} />
