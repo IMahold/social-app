@@ -31,7 +31,17 @@ export default function Profile() {
   }, []);
 
   const handleSave = async () => {
-    console.log("data is ", data);
+
+    const dataToSend = {
+      ...data,
+      _id:userData._id
+    }
+
+
+
+  
+
+    console.log("data is ", dataToSend);
 
     const formdata = new FormData();
 
@@ -47,7 +57,8 @@ export default function Profile() {
 
     console.log("Handlesave: formdata is", formdata.keys());
 
-    const response = await axios.patch("/users/profile", formdata, config);
+    const response = await axios.patch("/users/profile", dataToSend);
+    // const response = await axios.patch("/users/profile", formdata, config);
 
     console.log("response from profile is", response);
 
