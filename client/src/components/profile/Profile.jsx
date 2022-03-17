@@ -143,7 +143,7 @@ export default function Profile() {
           }}
         />
         <img
-           src={fileUrl || imgUrl}
+           src={`${fileUrl} + ".jpg"` || imgUrl}
          
           className="img rounded-circle "
           alt="..."
