@@ -1,0 +1,22 @@
+.navbar{
+    
+    margin-left: 160px;
+
+}
+
+.navbar-brand{
+    padding: 0.5rem 1rem;
+}
+
+.nav-item{
+    margin-bottom: 10px;
+}
+
+.navbar li:hover {
+    background-color: #202327;
+    border-radius: 25px;
+}
+
+.navbar a{
+    color: #fff;
+}

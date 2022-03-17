@@ -1,0 +1,138 @@
+:root{
+    --font-awesome-free: "Font Awesome 5 Free";
+    --icon-font-size: 16px;
+    --border-color-center: 1px solid #2f3336;
+}
+
+.rightSectionContainer{
+    position: sticky;
+    border-left: 1px solid #202327;
+    top: 0;
+    float: right;
+    margin-top: -150px;
+    height: 100vh
+}
+
+
+
+.rightSectionContainer *{
+    font-size: 16px !important;
+
+}
+.rightSection {
+    width: 50%;
+    margin-top: 5px;
+    vertical-align: top;
+    margin-left: 40px;
+    /* margin-left: 40px; */
+    /* z-index: 99; */
+    /* width: 25%; */
+    
+}
+.trendForYou,
+.topicToFollow {
+    border-radius: 25px;
+    background-color: #15181D;
+    margin-top: 25px;
+}
+
+.trendForYou h1,
+.topicToFollow h1 {
+    font-size: 1.4em;
+    font-weight: bolder;
+    border-bottom: var(--border-color-center);
+    padding: 20px;
+}
+
+.trendForYou h1::after {
+    font-family: var(--font-awesome-free);
+    content: '\f013';
+    float: right;
+    color: #1da1f3;
+}
+
+.trendForYou span,
+.tofollowDiv span {
+    color: grey !important;
+    /* padding: 20px; */
+    /* line-height: 32px; */
+}
+
+.foryouDiv,
+.tofollowDiv {
+    padding: 10px 20px;
+    
+    font-weight: bolder;
+}
+
+.foryouDiv:not(:last-child)::after {
+    font-family: var(--font-awesome-free);
+    content: "\f141";
+    float: right;
+    margin-top: -5%;
+    font-size: var(--icon-font-size) !important;
+    color: gray;
+}
+
+.foryouDiv:not(:last-child) {
+    border-bottom: var(--border-color-center);
+}
+
+.showmore {
+    color: #206996;
+    font-size: initial;
+}
+
+.showmore:hover {
+    color: #717577;
+}
+
+
+.tofollowDiv:not(:last-child) {
+    border-bottom: var(--border-color-center);
+}
+
+.tofollowDiv h3::after {
+    content: "Follow";
+    float: right;
+    color: #1da1f3;
+    border: 2px solid #1da1f3;
+    border-radius: 25px;
+    padding: 10px 25px;
+    font-weight: bolder;
+    margin-right: 40px;
+}
+
+.tofollowDiv span::after {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    content: "x";
+    float: right;
+    margin-right: -146px;
+    margin-top: -19px;
+    font-size: 2em;
+}
+
+
+.rightSection input {
+    background-color: #15181d;
+    border: none;
+    border-radius: 25px;
+    padding: 15px 40px 15px 80px;
+    font-size: 1.5em;
+    width: 100%;
+}
+
+.searchPart>span {
+    position: absolute;
+    /* margin-left: 45px; */
+    /* top: 14px; */
+    /* left: 15px; */
+    font-size: 1.8em;
+    padding: 14px;
+}
+
+.searchPart>span *{
+    color: grey !important;
+
+}

@@ -1,3 +1,17 @@
+/* body{
+    overflow-y: hidden;
+} */
+
+
 .main{
     width: 600px;
 }
+
+#root{
+    background-color: #000;
+}
+
+#root *:not(.modalContainer *, a){
+    color: #fff;
+}
+

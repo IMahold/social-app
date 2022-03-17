@@ -25,7 +25,8 @@ router.post("/add", async (req, res) => {
 
 router.get("/list", async (req, res) => {
   try {
-    const posts = await Post.find().limit(10).populate({
+    // .limit(10) removed because we want all the posts to be shown
+    const posts = await Post.find().populate({
       path: "owner",
       select: "username age address",
     });

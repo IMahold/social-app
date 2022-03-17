@@ -21,7 +21,7 @@ export default function LoginPage() {
   const toggleShow = () => setPopoverModal(!popoverModal);
 
   return (
-    <div className="login-container">
+    <div className="login-container ">
       <div className="background-image"></div>
       <div className="login-content">
       <i className="fab fa-3x fa-earlybirds"></i>
@@ -64,8 +64,8 @@ export default function LoginPage() {
             </MDBBtn>
 
             {popoverModal ? (
-              <MDBModal show={popoverModal} setShow={setPopoverModal}>
-                <MDBModalDialog>
+              <MDBModal className="modalContainer"  show={popoverModal} setShow={setPopoverModal}  >
+                <MDBModalDialog >
                   <MDBModalContent>
                     <MDBModalBody>
                       <LoginForm value={signUp} />
