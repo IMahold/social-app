@@ -63,8 +63,8 @@ export default function LoginForm({ value }) {
   // console.log("Value is", value);
 
   return (
-    <div style={{ width: "26rem", margin: "auto" }}>
-      <MDBTabs pills justify className="mb-3">
+    <div style={{ width: "26rem", margin: "auto",color: 'black' }}>
+      <MDBTabs pills justify className="mb-3" >
         <MDBTabsItem>
           <MDBTabsLink
             onClick={() => handleLoginRegisterClick("login")}
