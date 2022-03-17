@@ -1,5 +1,6 @@
 .main {
   padding: 0 !important;
+ 
 }
 
 .main > p {
@@ -7,8 +8,9 @@
   margin-top: 10px;
 }
 
-.modal-body {
+.modal-design .modal-body {
   padding: 0 !important;
+  background-color: #262626;
 }
 
 .ripple .ripple-surface {
@@ -18,6 +20,7 @@
 .imageModalContainer,
 .imageModalContainer > div:first-child {
   width: 100% !important;
+  
 }
 .imageModalContainer > div > :nth-child(2) {
   margin-left: 10px;
@@ -26,10 +29,12 @@
 .modalInput {
   padding: 0 20px;
   margin-top: -20px !important;
+  
 }
 
-.modalButton {
+.modal-design .modalButton {
   margin: 0 20px;
+  background-color: #4f4f4f;
 }
 
 .modalButtonContainer {
@@ -45,5 +50,18 @@
 
 .modalButtonContainer > span {
     grid-column: 2/2;
-    
 }
+
+.modal-design input {
+  background-color: #4f4f4f !important;
+  color: whitesmoke !important;
+}
+
+.modal-design .container-fluid {
+  background-color: #262626;
+}
+
+.button-design {
+  background-color: #4f4f4f !important;
+}
+

@@ -21,6 +21,7 @@ export default function Modal({
         setShow={setBasicModal}
         tabIndex="-1"
         scrollable
+        className="modal-design"
       >
         <MDBModalDialog>
           <MDBModalContent>
