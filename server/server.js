@@ -10,7 +10,9 @@ const connectToDb = require("./config/db");
 
 connectToDb();
 
-app.use(express.static("./server/uploads"));
+const path =  process.platform === 'win32' ? "server/uploads" : './server/uploads'
+
+app.use(express.static(path));
 
 const port = process.env.PORT || 6000;
 

@@ -143,7 +143,7 @@ export default function Profile() {
           }}
         />
         <img
-           src={`${fileUrl} + ".jpg"` || imgUrl}
+           src={fileUrl || imgUrl}
          
           className="img rounded-circle "
           alt="..."
@@ -190,7 +190,7 @@ export default function Profile() {
           key={item._id}
         >
           <img
-            src={imgUrl}
+            src={ fileUrl || imgUrl}
             className="rounded-circle z-depth-2"
             style={{ width: "50px", height: "50px", verticalAlign: "unset" }}
           />
