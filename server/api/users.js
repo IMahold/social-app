@@ -78,7 +78,7 @@ router.patch("/profile", uploadSimple.single('image'), async (req, res) => {
     if (!(email || username)) return res.send({ success: false, errorId: 2 });
 
 
-    req.body.image = req.file.filename + '.jpg'
+    req.body.image = req.file.filename
 
 
     
