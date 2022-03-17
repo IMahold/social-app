@@ -6,3 +6,14 @@
 .postsContainer{
     border-top: 1px solid #2f3336;
 }
+
+.postIconContainer > i:hover{
+    cursor: pointer;
+    /* color: blue !important; */
+    background: #202327;
+    border-radius: 25px;
+}
+.postIconContainer > i{
+    padding: 10px !important;
+
+}
