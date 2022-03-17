@@ -94,7 +94,7 @@ export default function Profile() {
         {/* <h6 className="mx-5 d-inline css-901oao text-muted"  >
               {userData?.username || "Name goes Here"}
             </h6> */}
-        <div className=" d-inline-block">
+        <div className=" d-inline- bg-dark">
           <MDBTypography
             className="mx-5"
             variant="h4"
@@ -127,7 +127,7 @@ export default function Profile() {
             border: "4px solid white",
           }}
         />
-        <button onClick={toggleShow}> Edit Profile </button>
+        <button className="btn text-light m-5 button-design" onClick={toggleShow}> Edit Profile </button>
       </MDBContainer>
 
       {basicModal ? (
@@ -135,6 +135,7 @@ export default function Profile() {
           toggleShow={toggleShow}
           basicModal={basicModal}
           setBasicModal={setBasicModal}
+          className="modal-design"
         >
           <Edit
             userData={userData}

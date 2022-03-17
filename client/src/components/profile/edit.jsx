@@ -26,7 +26,7 @@ export default function Edit({
         </MDBBtn> */}
         <MDBBtn
           className="btn-close ms-4"
-          color="none"
+          color="light"
           // className="d-inline"
           onClick={() => close()}
         />
@@ -73,10 +73,10 @@ export default function Edit({
         </MDBRipple>
       </div>
 
-      <div className="d-flex  modalInput">
+      <div className="d-flex modalInput bg-dark">
         <div>
           {/* Input To see the email */}
-          <Inputs title="email" value={userData?.email} isReadOnly={true} />
+          <Inputs title="email" value={userData?.email} isReadOnly={true}  />
 
           {/* Input To see the username */}
           <Inputs
