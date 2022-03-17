@@ -5,13 +5,15 @@ import { useContext } from "react";
 import { UserContext } from "../context";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-
-import './home.css'
+import { MDBIcon } from "mdb-react-ui-kit";
+import "./home.css";
 import RightSection from "../rightSection/rightSection";
 
 export default function Home() {
   const [newPost, setNewPost] = useState("");
   const [posts, setPosts] = useState([]);
+  const [isLiked, setIsLiked] = useState([]);
+  const [hearticon, setHeartIcon] = useState(isLiked ? "fas" : "far");
 
   const handleSave = async () => {
     const data = {
@@ -49,6 +51,9 @@ export default function Home() {
 
     getData();
   }, []);
+
+  console.log("isLiked", isLiked);
+  const imgUrl = "https://mdbootstrap.com/img/new/standard/city/041.webp";
   return (
     <>
       <div className="d-flex pt-4 ">
@@ -60,23 +65,37 @@ export default function Home() {
           onChange={(e) => setNewPost(e.target.value)}
           value={newPost}
         />
-        
-          <RightSection />
 
-        <div className='postsContainer w-50 m-auto'>
-          {posts?.reverse().map((item) => (
+        <RightSection />
+
+        <div className="postsContainer w-50 m-auto">
+          {posts?.reverse().map((item, idx) => (
             <div
               style={{
                 borderBottom: "1px solid #202327",
-                padding: "50px",
+                padding: "20px",
                 // margin: "20px",
               }}
               key={item._id}
             >
-              {item?.owner?.username} == {item?.text}
+              <img
+                src={imgUrl}
+                className="rounded-circle z-depth-2"
+                style={{ width: "50px", height: "50px", verticalAlign: "unset"}}
+              />
+              {/* {setIsLiked(...isLiked, {isLiked: false})} */}
+              <div className="d-inline-block mx-4">
+                <span className="text-muted">{item?.owner?.username}</span>
+                <p className="my-3">{item?.text}</p>
+                </div>
+              <div className='d-flex justify-content-between postIconContainer'>
+                <MDBIcon far icon="comment" />
+                <MDBIcon fas icon="retweet" />
+                <i className={`${isLiked[idx] ? "fas" : "far"} fa-heart`}></i>
+                <MDBIcon far icon="share-square" />
+              </div>
             </div>
           ))}
-
         </div>
       </div>
     </>
