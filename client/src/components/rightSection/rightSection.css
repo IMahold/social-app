@@ -5,11 +5,12 @@
 }
 
 .rightSectionContainer{
-    position: sticky;
+    position: fixed;
     border-left: 1px solid #202327;
     top: 0;
-    float: right;
-    margin-top: -250px;
+    /* float: right; */
+    right: 0;
+    /* margin-top: -250px; */
     height: 100vh
 }
 

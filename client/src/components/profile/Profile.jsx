@@ -99,18 +99,21 @@ export default function Profile() {
     setUserData(null);
     history.push("/");
   };
+
+  console.log(data?.posts?.length);
   return (
     <>
       <MDBContainer
         breakpoint="sm"
         fluid
-        style={{ maxWidth: "600px", margin: "10px auto" }}
+        style={{ padding: "10px 0" }}
+        className="w-50 "
       >
-        <Link to="/home">
+        <Link to="/home" className="ms-5 text-white"  >
           <MDBIcon
             fas
             icon="arrow-left"
-            className="text-dark"
+            // className="text-dark"
             style={{ verticalAlign: "middle", marginTop: "-30px" }}
           />
         </Link>
@@ -126,7 +129,7 @@ export default function Profile() {
           >
             {userData?.username || "Name goes Here"}
           </MDBTypography>
-          <p className="mx-5">Hoots {data?.posts}</p>
+          <p className="mx-5"> <span className="text-muted">{posts?.length} Hoots</span></p>
         </div>
         <img
           src={fileUrl || imgUrl}
@@ -134,7 +137,7 @@ export default function Profile() {
           alt="..."
           style={{
             width: "100%",
-            height: "200px",
+            height: "400px",
             objectFit: "cover",
             objectPosition: "bottom",
           }}
@@ -179,7 +182,7 @@ export default function Profile() {
         <div
           style={{
             borderBottom: "1px solid #202327",
-            padding: "20px",
+            padding: "0px 45px",
             width: "50%",
             margin: 'auto'
             // margin: "20px",
@@ -187,7 +190,7 @@ export default function Profile() {
           key={item._id}
         >
           <img
-            src={imgUrl}
+            src={ fileUrl || imgUrl}
             className="rounded-circle z-depth-2"
             style={{ width: "50px", height: "50px", verticalAlign: "unset" }}
           />

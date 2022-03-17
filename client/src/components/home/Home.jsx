@@ -54,6 +54,8 @@ export default function Home() {
 
   console.log("isLiked", isLiked);
   const imgUrl = "https://mdbootstrap.com/img/new/standard/city/041.webp";
+
+  
   return (
     <>
       <div className="d-flex pt-4 ">
@@ -79,7 +81,7 @@ export default function Home() {
               key={item._id}
             >
               <img
-                src={imgUrl}
+                src={  imgUrl}
                 className="rounded-circle z-depth-2"
                 style={{ width: "50px", height: "50px", verticalAlign: "unset"}}
               />
