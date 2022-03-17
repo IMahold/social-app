@@ -48,7 +48,7 @@ export default function Edit({
       // </label> */}
         <MDBRipple>
           <img
-            src="https://mdbootstrap.com/img/new/standard/city/041.webp"
+             src={fileUrl || "https://mdbootstrap.com/img/new/standard/city/041.webp"}
             className="img "
             alt="..."
             style={{
@@ -59,7 +59,7 @@ export default function Edit({
             }}
           />
           <img
-            src="https://mdbootstrap.com/img/new/standard/city/041.webp"
+            src={fileUrl || "https://mdbootstrap.com/img/new/standard/city/041.webp"}
             className="img rounded-circle "
             alt="..."
             style={{

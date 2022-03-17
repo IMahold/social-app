@@ -9,6 +9,9 @@ import { MDBContainer, MDBIcon, MDBTypography } from "mdb-react-ui-kit";
 // import Inputs from "./profileComponents/inputs";
 import Edit from "./edit";
 import Modal from "./profileComponents/modal";
+
+
+
 export default function Profile() {
   const { userData, setUserData } = useContext(UserContext);
   const [data, setData] = useState({
@@ -32,21 +35,21 @@ export default function Profile() {
 
   const handleSave = async () => {
 
-    const dataToSend = {
-      ...data,
-      _id:userData._id
-    }
+    // const dataToSend = {
+    //   ...data,
+    //   _id:userData?._id
+    // }
 
 
 
   
 
-    console.log("data is ", dataToSend);
+    // console.log("data is ", dataToSend);
 
     const formdata = new FormData();
 
     //formdata.address = data.address
-    formdata.set("_id", userData._id);
+    formdata.set("_id", userData?._id);
 
     Object.entries(data).forEach((item) => formdata.set(item[0], item[1]));
     if (blobFile) formdata.set("image", blobFile, "somefilename"); // add a file and a name
@@ -57,8 +60,8 @@ export default function Profile() {
 
     console.log("Handlesave: formdata is", formdata.keys());
 
-    const response = await axios.patch("/users/profile", dataToSend);
-    // const response = await axios.patch("/users/profile", formdata, config);
+    // const response = await axios.patch("/users/profile", dataToSend);
+    const response = await axios.patch("/users/profile", formdata, config);
 
     console.log("response from profile is", response);
 
@@ -105,7 +108,7 @@ export default function Profile() {
           <p className="mx-5">Hoots {data?.posts}</p>
         </div>
         <img
-          src="https://mdbootstrap.com/img/new/standard/city/041.webp"
+          src={fileUrl || "https://mdbootstrap.com/img/new/standard/city/041.webp"}
           className="img "
           alt="..."
           style={{
@@ -116,7 +119,7 @@ export default function Profile() {
           }}
         />
         <img
-          src="https://mdbootstrap.com/img/new/standard/city/041.webp"
+           src={fileUrl || "https://mdbootstrap.com/img/new/standard/city/041.webp"}
           className="img rounded-circle "
           alt="..."
           style={{
