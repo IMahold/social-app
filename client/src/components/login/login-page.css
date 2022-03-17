@@ -10,10 +10,10 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-/* .fab {
-  color: rgb(18, 118, 211);
-} */
+.icon {
+  position: relative;
+  top: 8rem;
+}
 
 .login-content {
   padding: 45px;
