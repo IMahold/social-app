@@ -94,12 +94,15 @@ export default function Profile() {
     setUserData(null);
     history.push("/");
   };
+
+  console.log(data?.posts?.length);
   return (
     <>
       <MDBContainer
         breakpoint="sm"
         fluid
-        style={{ maxWidth: "600px", margin: "10px auto" }}
+        style={{ padding: "10px 0" }}
+        className="w-50"
       >
         <Link to="/home">
           <MDBIcon
@@ -113,7 +116,7 @@ export default function Profile() {
         {/* <h6 className="mx-5 d-inline css-901oao text-muted"  >
               {userData?.username || "Name goes Here"}
             </h6> */}
-        <div className=" d-inline- bg-dark">
+        <div className=" d-inline ">
           <MDBTypography
             className="mx-5"
             variant="h4"
@@ -121,7 +124,7 @@ export default function Profile() {
           >
             {userData?.username || "Name goes Here"}
           </MDBTypography>
-          <p className="mx-5">Hoots {data?.posts}</p>
+          <p className="mx-5"> <span className="text-muted">{posts?.length} Hoots</span></p>
         </div>
         <img
           src={imgUrl}
@@ -129,7 +132,7 @@ export default function Profile() {
           alt="..."
           style={{
             width: "100%",
-            height: "200px",
+            height: "400px",
             objectFit: "cover",
             objectPosition: "bottom",
           }}
