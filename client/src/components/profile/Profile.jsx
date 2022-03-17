@@ -35,17 +35,22 @@ export default function Profile() {
   }, []);
 
   const handleSave = async () => {
-    const dataToSend = {
-      ...data,
-      _id: userData._id,
-    };
 
-    console.log("data is ", dataToSend);
+    // const dataToSend = {
+    //   ...data,
+    //   _id:userData?._id
+    // }
+
+
+
+  
+
+    // console.log("data is ", dataToSend);
 
     const formdata = new FormData();
 
     //formdata.address = data.address
-    formdata.set("_id", userData._id);
+    formdata.set("_id", userData?._id);
 
     Object.entries(data).forEach((item) => formdata.set(item[0], item[1]));
     if (blobFile) formdata.set("image", blobFile, "somefilename"); // add a file and a name
@@ -56,8 +61,8 @@ export default function Profile() {
 
     console.log("Handlesave: formdata is", formdata.keys());
 
-    const response = await axios.patch("/users/profile", dataToSend);
-    // const response = await axios.patch("/users/profile", formdata, config);
+    // const response = await axios.patch("/users/profile", dataToSend);
+    const response = await axios.patch("/users/profile", formdata, config);
 
     console.log("response from profile is", response);
 
@@ -127,7 +132,7 @@ export default function Profile() {
           <p className="mx-5"> <span className="text-muted">{posts?.length} Hoots</span></p>
         </div>
         <img
-          src={imgUrl}
+          src={fileUrl || imgUrl}
           className="img "
           alt="..."
           style={{
@@ -138,7 +143,8 @@ export default function Profile() {
           }}
         />
         <img
-          src={imgUrl}
+           src={fileUrl || imgUrl}
+         
           className="img rounded-circle "
           alt="..."
           style={{
