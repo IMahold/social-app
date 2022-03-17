@@ -6,7 +6,9 @@
 .main{
     width: 600px;
 }
-
+body{
+    background-color: #000 !important;
+}
 #root{
     background-color: #000;
 }

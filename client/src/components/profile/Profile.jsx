@@ -102,13 +102,13 @@ export default function Profile() {
         breakpoint="sm"
         fluid
         style={{ padding: "10px 0" }}
-        className="w-50"
+        className="w-50 "
       >
-        <Link to="/home">
+        <Link to="/home" className="ms-5 text-white"  >
           <MDBIcon
             fas
             icon="arrow-left"
-            className="text-dark"
+            // className="text-dark"
             style={{ verticalAlign: "middle", marginTop: "-30px" }}
           />
         </Link>
@@ -116,7 +116,7 @@ export default function Profile() {
         {/* <h6 className="mx-5 d-inline css-901oao text-muted"  >
               {userData?.username || "Name goes Here"}
             </h6> */}
-        <div className=" d-inline ">
+        <div className=" d-inline-block">
           <MDBTypography
             className="mx-5"
             variant="h4"
@@ -176,7 +176,7 @@ export default function Profile() {
         <div
           style={{
             borderBottom: "1px solid #202327",
-            padding: "20px",
+            padding: "0px 45px",
             width: "50%",
             margin: 'auto'
             // margin: "20px",
